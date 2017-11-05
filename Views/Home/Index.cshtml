@@ -1,0 +1,98 @@
+﻿@using NFLPlayers.Models
+@model IEnumerable<Player>
+
+
+
+    @{
+        ViewBag.Title = "NFL Players";
+    }
+
+    <div class="container heading-container">
+        <div class="heading">NFL Active Player Roster </div>
+    </div>
+
+<hr />
+
+@Html.ActionLink("Add new player", "Add", null, new { @class = "btn btn-default" })
+
+@Html.ActionLink("Inactive", "Treatment", null, new { @class = "btn btn-default" })
+<br/><br/>
+
+
+@using (Html.BeginForm())
+{
+    <p class="search">
+        Position: @Html.DropDownList("playerPosition", "All")
+        Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" class="btn btn-default" />
+    </p>
+}
+
+<table class="table table-striped table-condensed">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Team)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearsPro)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Touchdowns)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.ProfileURL)*@
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+                
+            <td>
+                @Html.DisplayFor(modelItem => item.Team)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearsPro)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Status);
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Touchdowns)
+            </td>
+
+            <td>
+                @*@Html.DisplayFor(modelItem => item.ProfileURL)*@
+                <img src="@Url.Content(item.ProfilePic)" height="100" />
+            </td>
+
+            <td class="text-center">
+                <ul class="list-inline">
+                    @Html.ActionLink("Profile", "Profile", new { item.id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Edit", "Edit", new { item.id }, new { @class = "btn btn-default" })
+                    @Html.ActionLink("Delete", "Delete", new { item.id }, new { @class = "btn btn-default" })
+                </ul>
+            </td>
+
+        </tr>
+    }
+
+</table>
+

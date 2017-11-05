@@ -1,0 +1,77 @@
+﻿@model NFLPlayers.Models.Player
+
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+@*<h2>Profile</h2>*@
+
+
+<div class="container col-md-3 col-lg-offset-1">
+    <div class="thumbnail" style="width:60%">
+        <img src="@Url.Content(Model.ProfilePic)"  Alt = "Player" height="200" />
+    </div>
+
+        <div class="caption col">
+            
+            <h2>@Html.DisplayFor(model=> model.Name)</h2>
+
+            <p>
+                @Html.DisplayNameFor(model => model.BirthDate):@Html.DisplayFor(model => model.BirthDate)
+            </p>
+            <p>
+                @Html.DisplayNameFor(model => model.Team):@Html.DisplayFor(model => model.Team)
+            </p>
+            <p>
+                @Html.DisplayNameFor(model => model.Position):@Html.DisplayFor(model => model.Position)
+            </p>
+            <p>
+                @Html.DisplayNameFor(model => model.Height):@Html.DisplayFor(model => model.Height)
+            </p>
+            <p>
+                @Html.DisplayNameFor(model => model.Weight):@Html.DisplayFor(model => model.Weight)
+            </p>
+            <p>
+                @Html.DisplayNameFor(model => model.Touchdowns):@Html.DisplayFor(model => model.Touchdowns)
+            </p>
+            <p>
+                @Html.DisplayNameFor(model => model.Yards):@Html.DisplayFor(model => model.Yards)
+            </p>
+            <p>
+                @Html.DisplayNameFor(model => model.Status):@Html.DisplayFor(model => model.Status)
+            </p>
+
+        
+        </div>
+
+<div>
+@Html.ActionLink("Back to List", "Index")
+</div>
+
+</div>
+
+
+<div>
+    @if(Model.Name == "Aaron Rodgers")
+    {
+                <article><h3>GameAction</h3></article>
+                <iframe type="text/html" width="300" height="300" src="https://www.youtube.com/embed/kElwOn_y93w?ecver=2?autoplay=1" frameborder="0"></iframe>
+    }
+    @if (Model.Name == "Dak Prescot")
+    {
+        <article><h3>GameAction</h3></article>
+                <iframe type="text/html" width="300" height="300" src="https://www.youtube.com/embed/qt4WlFt7FD4?ecver=2?autoplay=1" frameborder="0"></iframe>
+    }
+    @if (Model.Name == "Eziekiel Elliot")
+    {
+        <article><h3>GameAction</h3></article>
+        <iframe type="text/html" width="300" height="300" src="https://www.youtube.com/embed/RHWTVO9CqAo?ecver=2?autoplay=1" frameborder="0"></iframe>
+    }
+    @if (Model.Name == "Tom Brady")
+    {
+        <article><h3>GameAction</h3></article>
+        <iframe type="text/html" width="300" height="300" src="https://www.youtube.com/embed/XvFei7v6wdY?ecver=2?autoplay=1" frameborder="0"></iframe>
+    }
+
+</div>

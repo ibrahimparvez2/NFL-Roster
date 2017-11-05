@@ -1,0 +1,73 @@
+﻿@model IEnumerable<NFLPlayers.Models.Player>
+
+@{
+    ViewBag.Title = "Treatment";
+}
+
+<h2>Non Active Players</h2>
+
+
+    
+    <hr />
+    <div class="col-md-10">
+        <h2> Check Status Description</h2>
+   
+        <table class="table treatmentBackground">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Team)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.YearsPro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProfilePic)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+              
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Team)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.YearsPro)
+                    </td>
+                    
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.ProfilePic)*@
+                     <img src="@Url.Content(item.ProfilePic)" height="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) 
+                          
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
